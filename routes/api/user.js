@@ -8,7 +8,7 @@ const config = require("config");
 
 router.post("/verify/token", async (req, res) => {
   try {
-    const verifiedToken = jwt.verify(req.body.token, config.get("SECRET_KEY"));
+    const verifiedToken = jwt.verify(req.body.token, process.env.mongourl);
 
     return res.send(verifiedToken);
   } catch (error) {
@@ -47,7 +47,7 @@ router.post(
       };
       jwt.sign(
         payload,
-        config.get("SECRET_KEY"),
+        process.env.mongourl,
         { expiresIn: 36000 },
         (err, token) => {
           if (err) throw err;
@@ -103,7 +103,7 @@ router.post(
       };
       jwt.sign(
         payload,
-        config.get("SECRET_KEY"),
+        process.env.mongourl,
         { expiresIn: 36000 },
         (err, token) => {
           if (err) throw err;

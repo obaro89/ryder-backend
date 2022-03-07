@@ -37,7 +37,7 @@ router.post(
       };
       jwt.sign(
         payload,
-        process.env.mongourl,
+        process.env.SECRET_KEY,
         //config.get("SECRET_KEY"),
         { expiresIn: 36000 },
         (err, token) => {
@@ -94,7 +94,7 @@ router.post(
       };
       jwt.sign(
         payload,
-        process.env.mongourl,
+        process.env.SECRET_KEY,
         { expiresIn: 36000 },
         (err, token) => {
           if (err) throw err;
